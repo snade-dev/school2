@@ -1,8 +1,6 @@
 import PresentationCard from "../components/PresentationCard";
-import { infos } from "../data";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Presentation() {

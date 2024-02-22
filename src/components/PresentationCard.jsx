@@ -1,19 +1,22 @@
 import { infos } from "../data";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import clsx from "clsx";
 
 export default function PresentationCard({ number, left, taille }) {
   const pRef = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
+  const className = clsx('flex flex-col gap-4 md:grid my-3 pBox', {
+    'md:grid-cols-2': taille === 2,
+    "md:grid-cols-3": taille === 3,
+  })
   
 
   return (
     <div
       ref={pRef}
-      className={`flex flex-col gap-4 md:grid md:grid-cols-${taille}
-      } my-3 pBox`}
+      className={className}
     >
       {left && (
         <div className=" sm:mr-6 rightBox">
