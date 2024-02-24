@@ -21,6 +21,14 @@ export default function Presentation() {
       stagger: 1.2,
       scrollTrigger: { trigger: ".leftBox" },
     });
+
+    const textAnimation = gsap.timeline();
+
+    textAnimation.from(".char", {
+      y: 100,
+      stagger: { each: 0.1 },
+      ease: "back.out",
+    });
   });
 
   return (
@@ -30,8 +38,14 @@ export default function Presentation() {
         style={{ backgroundImage: "url('/profile.jpg')" }}
       >
         <div className=" w-full h-full bg-black opacity-50 absolute z-0"></div>
-        <h1 className="text-4xl text-white font-bold z-10 opacity-0">
-          Notre Ecole
+        <h1 className="text-4xl text-white font-bold z-10 flex overflow-hidden">
+          {"Notre Ecole".split("").map((word) => {
+            return word === " " ? (
+              <span className="char">&nbsp;</span>
+            ) : (
+              <span className="char">{word}</span>
+            );
+          })}
         </h1>
       </div>
       <div className=" flex flex-col gap-4">
